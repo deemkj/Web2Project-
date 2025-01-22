@@ -1,0 +1,140 @@
+/* General Styles */
+
+*{
+	font-family:Times New Roman;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #fffbea; /* Light yellow background as before */
+}
+
+/* Header */
+header {
+    background-color: #e6b800;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Welcome Text */
+.doctor-welcome-text {
+    color: black; /* Yellow color for welcome text */
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.doctor-welcome-text:hover {
+    color: #e6b800; /* Yellow color for welcome text */
+    font-size: 26px;
+}
+
+
+/* Container */
+.doctor-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Patient Card */
+.doctor-info-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.doctor-card {
+    width: 100%;
+    max-width: 600px; /* Increased size to fit design */
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.doctor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.doctor-card-header {
+    background-color: #e6b800;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.doctor-card-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.doctor-card-body {
+    padding: 20px;
+}
+
+.doctor-card-body p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Table and Appointments */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #e6b800;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table th {
+    background-color: #e6b800;
+    color: white;
+}
+
+
+
+
+
+/* Footer */
+footer {
+    background-color: #e6b800;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+}
+
+footer img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    transition: transform 0.3s ease;
+}
+
+footer img:hover {
+    transform: scale(1.2);
+}
