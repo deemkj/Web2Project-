@@ -78,29 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// Dynamic Population of Doctors Based on Specialty
-const specialtyDropdown = document.getElementById('specialty');
-const doctorDropdown = document.getElementById('doctor');
 
-const doctorsBySpecialty = {
-   "vision-therapy": ["Dr. Sara Al-Mutairi", "Dr. Mohammed Al-Otaibi"],
-   "contact-lenses": ["Dr. Lama Al-Fahad", "Dr. Abdullah Al-Qahtani"],
-   "ocular-disease": ["Dr. Laila Al-Rashed", "Dr. Ahmed Al-Harbi"],
-  "pediatric-optometry": ["Dr. Fatima Al-Anazi", "Dr. Youssef Al-Shammari"]
-};
-
-specialtyDropdown.addEventListener('change', function () {
-    const selectedSpecialty = this.value;
-    doctorDropdown.innerHTML = `<option value="" disabled selected>Select a doctor...</option>`;
-    if (doctorsBySpecialty[selectedSpecialty]) {
-        doctorsBySpecialty[selectedSpecialty].forEach(doctor => {
-            const option = document.createElement('option');
-            option.value = doctor.toLowerCase().replace(/\s+/g, '-');
-            option.textContent = doctor;
-            doctorDropdown.appendChild(option);
-        });
-    }
-});
 
 
 

@@ -20,24 +20,29 @@
             <!-- First Form -->
             <form class="form form-specialty">
                 <h2>Select Specialty</h2>
-                <select name="specialty" id="specialty" class="dropdown" on>
+                <select name="specialty" id="specialty" class="dropdown" required>
                     <option value="" disabled selected>Choose a specialty...</option>
                     <option value="vision-therapy">Vision Therapy</option>
                     <option value="contact-lenses">Contact Lenses</option>
                     <option value="ocular-disease">Ocular Disease</option>
                     <option value="pediatric-optometry">Pediatric Optometry</option>
                 </select>
+                <button type="submit" class="bttn">Submit</button>
             </form>
 
             <!-- Second Form -->
             <form class="form form-details">
                 <h2>Appointment Details</h2>
-                <select name="doctor" id="doctor" class="dropdown">
+                <select name="doctor" id="doctor" class="dropdown" required>
                     <option value="" disabled selected>Select a doctor...</option>
+                    <option value="Dr. Smith">Dr. Smith</option>
+                    <option value="Dr. Johnson">Dr. Johnson</option>
+                    <option value="Dr. Brown">Dr. Brown</option>
+                    <option value="Dr. Garcia">Dr. Garcia</option>
                 </select>
-                <input type="date" name="date" id="date" class="input">
-                <input type="time" name="time" id="time" class="input">
-                <textarea name="reason" id="reason" class="textarea" placeholder="Reason for visit..."></textarea>
+                <input type="date" name="date" id="date" class="input" required>
+                <input type="time" name="time" id="time" class="input" required>
+                <textarea name="reason" id="reason" class="textarea" placeholder="Reason for visit..." required></textarea>
                 <button type="submit" class="bttn"><a href="Ebsar Homepage.html">Book Appointment</a></button>
             </form>
         </div>
@@ -81,8 +86,5 @@
             <p>&copy; 2025 Website. All rights reserved.</p>
         </div>
     </footer>
-
-    <script src="JS.js"></script>
-
 </body>
 </html>
