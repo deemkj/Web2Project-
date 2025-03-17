@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 16, 2025 at 06:31 PM
--- Server version: 5.7.24
--- PHP Version: 8.3.1
+-- Generation Time: Mar 17, 2025 at 03:29 AM
+-- Server version: 8.0.40
+-- PHP Version: 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `appointment` (
-  `id` int(4) NOT NULL,
-  `PatientID` int(4) NOT NULL,
-  `DoctorID` int(4) NOT NULL,
+  `id` int NOT NULL,
+  `PatientID` int NOT NULL,
+  `DoctorID` int NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL,
   `reason` varchar(500) NOT NULL,
   `status` enum('Pending','Confirmed','Done') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `appointment`
@@ -54,14 +54,14 @@ INSERT INTO `appointment` (`id`, `PatientID`, `DoctorID`, `date`, `time`, `reaso
 --
 
 CREATE TABLE `doctor` (
-  `id` int(4) NOT NULL,
+  `id` int NOT NULL,
   `firstName` varchar(100) NOT NULL,
   `lastName` varchar(100) NOT NULL,
   `uniqueFileName` varchar(10) NOT NULL,
-  `SpecialityID` int(4) DEFAULT NULL,
+  `SpecialityID` int DEFAULT NULL,
   `emailAddress` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `doctor`
@@ -82,9 +82,9 @@ INSERT INTO `doctor` (`id`, `firstName`, `lastName`, `uniqueFileName`, `Speciali
 --
 
 CREATE TABLE `medication` (
-  `id` int(4) NOT NULL,
+  `id` int NOT NULL,
   `MedicationName` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `medication`
@@ -106,14 +106,14 @@ INSERT INTO `medication` (`id`, `MedicationName`) VALUES
 --
 
 CREATE TABLE `patient` (
-  `id` int(4) NOT NULL,
+  `id` int NOT NULL,
   `firstName` varchar(20) NOT NULL,
   `lastName` varchar(20) NOT NULL,
   `Gender` varchar(1) NOT NULL,
   `DOB` date NOT NULL,
   `emailAddress` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `patient`
@@ -131,10 +131,10 @@ INSERT INTO `patient` (`id`, `firstName`, `lastName`, `Gender`, `DOB`, `emailAdd
 --
 
 CREATE TABLE `prescription` (
-  `id` int(4) NOT NULL,
-  `AppointmentID` int(4) NOT NULL,
-  `MedicationID` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int NOT NULL,
+  `AppointmentID` int NOT NULL,
+  `MedicationID` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `prescription`
@@ -153,9 +153,9 @@ INSERT INTO `prescription` (`id`, `AppointmentID`, `MedicationID`) VALUES
 --
 
 CREATE TABLE `speciality` (
-  `id` int(4) NOT NULL,
+  `id` int NOT NULL,
   `speciality` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `speciality`
@@ -215,6 +215,46 @@ ALTER TABLE `prescription`
 --
 ALTER TABLE `speciality`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `appointment`
+--
+ALTER TABLE `appointment`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4447;
+
+--
+-- AUTO_INCREMENT for table `doctor`
+--
+ALTER TABLE `doctor`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6667;
+
+--
+-- AUTO_INCREMENT for table `medication`
+--
+ALTER TABLE `medication`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7778;
+
+--
+-- AUTO_INCREMENT for table `patient`
+--
+ALTER TABLE `patient`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3334;
+
+--
+-- AUTO_INCREMENT for table `prescription`
+--
+ALTER TABLE `prescription`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4445;
+
+--
+-- AUTO_INCREMENT for table `speciality`
+--
+ALTER TABLE `speciality`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8889;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
