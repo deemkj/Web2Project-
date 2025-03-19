@@ -35,7 +35,6 @@ include 'DBconnection.php';
             <!-- First Form -->
             
             <form class="form form-specialty"   action='Appointment Booking.php' method='post'>  <!--  Form -->
-             <input type='hidden' value='selectSpecialty' name='requestType'>
 
                 <h2>Select Specialty</h2>
                 <?php
@@ -78,7 +77,7 @@ echo "<option value='" . $r['id'] . "'>" . $r['firstName'] . " " . $r['lastName'
                     
                             ?>
                     <?php
-             if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['requestType']=='selectSpecialty'){
+             if($_SERVER['REQUEST_METHOD']=='POST'){
                         $specialty=$_POST['speciality'];// first we need to bring id of specialty from specialty table
                         
                         
