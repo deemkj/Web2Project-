@@ -30,7 +30,7 @@ include 'DBconnection.php';
 <body>
     <header>
         
-            <div class="logo"><a href="EbsarHomepage.php"><img src="images/2logo.png" alt="Ebsar Logo"></a>
+            <div class="logo"><a href="Ebsar Homepage.html"><img src="images/2logo.png" alt="Ebsar Logo"></a>
             </div>    </header>
     <main class="prescribe-section">
         <div class="content">

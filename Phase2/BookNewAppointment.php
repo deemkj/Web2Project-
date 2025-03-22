@@ -7,12 +7,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
        <?php
     error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+session_start();
+$Pid=$_SESSION['user_id'];
     
 include 'DBconnection.php';
  
                  $DoctorID=$_POST['doctorID'];
-                 $Pid=$_GET["PID"];// need to be sent by patient page 
+                // $Pid=$_GET["PID"];// need to be sent by patient page 
                  $date=$_POST['date'];
                  $time=$_POST['time'];
                  $reason=$_POST['reason'];

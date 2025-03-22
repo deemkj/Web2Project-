@@ -21,7 +21,7 @@ include 'DBconnection.php';
 </head>
 <body>
     <header>
-        <div class="logo"><a href="Ebsar Homepage.php"><img src="images/2logo.png" alt="Ebsar Logo"></a>
+        <div class="logo"><a href="Ebsar Homepage.html"><img src="images/2logo.png" alt="Ebsar Logo"></a>
         </div>
 
     </header>
