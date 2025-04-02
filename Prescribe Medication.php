@@ -1,21 +1,8 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
  <?php 
     error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
-
 include 'DBconnection.php';
-
-
-        
-        
-        
-        
-    
     ?>
 <html lang="en">
 <head>
@@ -101,10 +88,12 @@ echo "<label><input type='checkbox' name='medications[]' value='" . $r['id'] . "
                     ?>
                    
                 </div>
+                <br><br>
                 
-                
-        <input type="submit" class="btn" value="Save and Return">
-        
+    <div style="text-align: center;">
+    <input type="submit" class="btn" value="Save and Return">
+     </div>
+
 
             </form>
 
@@ -151,12 +140,5 @@ echo "<label><input type='checkbox' name='medications[]' value='" . $r['id'] . "
             <p>&copy; 2025 Website. All rights reserved.</p>
         </div>
     </footer>
-    
-   
-        
-        
-        
-    }
-   
 </body>
 </html
