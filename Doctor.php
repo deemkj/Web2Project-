@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== "doctor") {
 $doctorID = $_SESSION['user_id'];
 
 // Get doctor info
-$sql = "SELECT d.firstName, d.lastName, s.speciality, d.emailAddress 
+$sql = "SELECT d.id, d.firstName, d.lastName,d.uniqueFileName, s.speciality, d.emailAddress 
         FROM doctor d 
         JOIN speciality s ON d.SpecialityID = s.id
         WHERE d.id = '$doctorID'";
@@ -77,8 +77,15 @@ $patients = mysqli_query($conn, $sqlPatients);
     .action-link:hover {
         color: #002f6c;
     }
-
-    
+ 
+.doctor-photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}   
 </style>
 <head>
     <meta charset="UTF-8">
@@ -103,6 +110,14 @@ $patients = mysqli_query($conn, $sqlPatients);
             <div class="doctor-card-body">
                 <p><strong>First Name:</strong> <?php echo $doctor['firstName']; ?></p>
                 <p><strong>Last Name:</strong> <?php echo $doctor['lastName']; ?></p>
+                <p><strong>ID:</strong> <?php echo $doctor['id']; ?></p>
+<p><strong>Your Photo:</strong></p>
+<?php
+$photoName = $doctor['uniqueFileName'];
+if ($photoName) {
+    echo "<img src='/serverImages/" . htmlspecialchars($photoName) . "' alt='Doctor Photo' class='doctor-photo'>";
+}
+?>
                 <p><strong>Specialty:</strong> <?php echo $doctor['speciality']; ?></p>
                 <p><strong>Email:</strong> <?php echo $doctor['emailAddress']; ?></p>
             </div>
