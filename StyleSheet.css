@@ -1,5 +1,4 @@
-
-        body {
+ body {
             margin: 0;
             padding: 0;
             font-family: Georgia, serif;
@@ -462,6 +461,20 @@ h2:hover {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+
+.cancel-btn {
+    color: #053262;          
+    font-weight: bold;       
+    text-decoration: underline; 
+    font-size: 15px;       
+    transition: color 0.3s ease;
+}
+
+.cancel-btn:hover {
+    color: #c70000;         
+}
+
+
 /* Book Appointment Link */
 .book-link {
     display: inline-block;
@@ -500,7 +513,7 @@ h2:hover {
     background: url('images/app.jpg') no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
-    height: 300px;
+    height: 400px;
     filter: blur(2px); 
     opacity: 0.9; 
 }
@@ -536,17 +549,20 @@ h2:hover {
 }
 
 
-
-
-.App-forms{
-    background-color: #fffaf0; 
+.App-forms {
+    background-color: #fffaf0;
     border: 1px solid #f7eada;
-       border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 15px rgba(0.3,.3, .3, .3);
-    width: 500px;
-    height: 500px;
+    border-radius: 15px;
+    padding: 40px 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    box-sizing: border-box;
+    min-height: 600px;
+    height: auto;
 }
+
 
 .App-forms h2 {
     text-align: left;
@@ -575,6 +591,26 @@ h2:hover {
 .textarea {
     height: 80px;
     resize: none;
+}
+.btn {
+    background-color: #f0be36;
+    color: white;
+    padding: 9px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Georgia, serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    text-align: center;
+    width: 200px;
+}
+
+.btn:hover {
+    background-color: #e0aa00;
+    transform: scale(1.05);
 }
 
 #bt{
@@ -695,6 +731,20 @@ h2:hover {
         color: white;
     }
 
+.confirm-link {
+    color: #1a374d;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+
+.confirm-link:hover {
+    color: #4a7c9f;
+    transform: scale(1.06) translateY(-2px);
+}
+
+
 /* prescribe-section */
 .prescribe-section {
     display: flex;
@@ -726,7 +776,7 @@ h2:hover {
     width: 80%;
     margin: 20px auto;
     width: 500px;
-    height: 600px;
+    height: 550px;
 }
 
 .prescribe-form button {
