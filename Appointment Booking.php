@@ -1,10 +1,21 @@
 <!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
+-->
+
 <?php 
     error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
     
 include 'DBconnection.php';
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'patient') {
+    header("Location: Log-In page.html"); 
+    exit();
+}
+
 
     ?>
 
@@ -152,4 +163,3 @@ echo "<option value='" . $r['id'] . "'>" . $r['firstName'] . " " . $r['lastName'
    
 </body>
 </html>
-

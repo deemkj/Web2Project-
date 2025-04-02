@@ -1,8 +1,23 @@
 <!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
+-->
+ <!DOCTYPE html>
  <?php 
     error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include 'DBconnection.php';
+
+
+session_start();
+
+
+// Redirect to homepage if user is not a doctor
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== "doctor") {
+    header("Location: Ebsar Homepage.html");
+    exit();
+}
     ?>
 <html lang="en">
 <head>
