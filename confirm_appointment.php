@@ -14,3 +14,5 @@ mysqli_query($conn, $sql);
 header("Location: Doctor.php");
 exit();
 ?>
+
+
