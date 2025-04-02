@@ -1,10 +1,4 @@
-
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
-
-       <?php
+<?php
     error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
@@ -23,19 +17,12 @@ if (mysqli_query($conn, $sql)) {
    
     echo "<script>
                 alert('Appointment booked successfully!');
-                window.location.href = 'PatientHomePage.php';
+                window.location.href = 'Patient HomePage.php';
               </script>";
     
     exit(); 
 } else {
     echo " Error: " . mysqli_error($conn);
 }
-
-                 
-                 
-                 
-             
-            
-            
-            ?>
+?>
     
