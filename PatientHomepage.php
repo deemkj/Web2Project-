@@ -1,17 +1,13 @@
 <?php
 
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+include 'DBconnection.php';
 
 // التحقق مما إذا كان المستخدم مسجل دخول أم لا
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'patient') {
-    header("Location: login.php"); // إعادة التوجيه إلى صفحة تسجيل الدخول
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'patient') {
+    header("Location: Log-In page.html"); // إعادة التوجيه إلى صفحة تسجيل الدخول
     exit();
 }
-
-// الاتصال بقاعدة البيانات
-include 'DBconnection.php';
 
 $patient_id = $_SESSION['user_id'];
 
@@ -119,7 +115,7 @@ if (!$result_appointments) {
             </tbody> 
         </table>
         <br><br> 
-        <a href="Appointment Booking.html" class="book-link">Book an appointment</a> 
+        <a href="Appointment Booking.php" class="book-link">Book an appointment</a> 
     </section> 
 </div> 
 
@@ -148,4 +144,4 @@ if (!$result_appointments) {
 
 <?php
 mysqli_close($conn);
-?>    
+?>     
