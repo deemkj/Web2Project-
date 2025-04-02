@@ -30,26 +30,31 @@ function showMore(button) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    var heroImage = document.getElementById("hero-image");
+
+    if (!heroImage) return; 
+
     var images = [
         "images/main2.jpg", 
         "images/main3.jpg", 
         "images/main4.jpg", 
     ];
 
-    var heroImage = document.getElementById("hero-image");
     var currentImageIndex = 0;
 
     function changeImage() {
-        heroImage.classList.add("fade-out"); // أضف التأثير عند تغيير الصورة
+        heroImage.classList.add("fade-out");
         setTimeout(function() {
             currentImageIndex = (currentImageIndex + 1) % images.length;
             heroImage.src = images[currentImageIndex];
-            heroImage.classList.remove("fade-out"); // أزل التأثير بعد تغيير الصورة
-        }, 1000); // تأخير للانتقال بعد اكتمال التأثير
+            heroImage.classList.remove("fade-out");
+        }, 1000);
     }
 
-    setInterval(changeImage, 3000); // اجعل التبديل كل 3 ثوانٍ لضمان وجود وقت للتأثير
+    setInterval(changeImage, 3000);
 });
+
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -126,5 +131,3 @@ card.addEventListener('mouseleave', () => {
     tooltip.style.display = 'none';
 });
 });
-
-
