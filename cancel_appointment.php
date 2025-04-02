@@ -12,7 +12,7 @@ if (isset($_GET['appointment_id'])) {
     mysqli_stmt_bind_param($stmt, "i", $appointment_id);
 
     if (mysqli_stmt_execute($stmt)) {
-        header("Location: PatientHomepage.php"); // إعادة التوجيه بعد الحذف
+        header("Location: Patient Homepage.php"); // إعادة التوجيه بعد الحذف
         exit();
     } else {
         die("Error canceling appointment: " . mysqli_error($conn));
@@ -24,3 +24,4 @@ if (isset($_GET['appointment_id'])) {
 // close connection to ebsardb
 mysqli_close($conn);
 ?>
+
