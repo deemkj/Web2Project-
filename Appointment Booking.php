@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
 <?php 
     error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -34,7 +30,7 @@ include 'DBconnection.php';
         <div class="App-forms">
             <!-- First Form -->
             
-            <form class="form form-specialty"   action='Appointment Booking.php' method='post'>  <!--  Form -->
+            <form class="form form-specialty"   action='Appointment Booking.php' method='post'> 
 
                 <h2>Select Specialty</h2>
                 <?php
@@ -156,3 +152,4 @@ echo "<option value='" . $r['id'] . "'>" . $r['firstName'] . " " . $r['lastName'
    
 </body>
 </html>
+
