@@ -2,8 +2,16 @@
 session_start();
 include "DBconnection.php"; 
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
 if (!isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['role'])) {
-    die("Error: Missing form fields");
+    echo "<script>
+        alert('Please fill in all the required fields!');
+        window.location.href = 'Log-In page.html';
+    </script>";
+    exit();
 }
 
 $email = $_POST['email'];
@@ -44,4 +52,5 @@ if ($row = $result->fetch_assoc()) {
     exit();
 }
 ?>
+
 
