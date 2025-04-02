@@ -58,7 +58,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_stmt_execute($stmt)) {
             $_SESSION["user_id"] = mysqli_insert_id($conn);
             $_SESSION["user_type"] = "patient";
-            header("Location: Patient Homepage.php");
+            echo "<script>
+            alert('Account has been created! please log in');
+             window.location.href = 'Log-In page.html';
+             </script>";
             exit();
         } else {
             echo "Error: " . mysqli_stmt_error($stmt);
@@ -102,7 +105,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_stmt_execute($stmt)) {
             $_SESSION["user_id"] = mysqli_insert_id($conn);
             $_SESSION["user_type"] = "doctor";
-            header("Location: Doctor.php");
+            echo "<script>
+            alert('Account has been created! please log in');
+             window.location.href = 'Log-In page.html';
+             </script>";
             exit();
         } else {
             die(" Error while saving: " . mysqli_stmt_error($stmt));
