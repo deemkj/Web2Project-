@@ -23,6 +23,11 @@ if (!$result_patient || mysqli_num_rows($result_patient) === 0) {
 }
 
 $patient = mysqli_fetch_assoc($result_patient);
+// حذف كل المواعيد التي حالتها 'done' للمريض الحالي
+$delete_done_sql = "DELETE FROM Appointment WHERE PatientID = ? AND status = 'done'";
+$stmt_delete = mysqli_prepare($conn, $delete_done_sql);
+mysqli_stmt_bind_param($stmt_delete, "i", $patient_id);
+mysqli_stmt_execute($stmt_delete);
 
 $sql_appointments = "SELECT a.id, a.date, a.time, a.status, d.firstName AS doctor_first, d.lastName AS doctor_last, d.uniqueFileName 
                      FROM Appointment a
@@ -91,6 +96,11 @@ if (!$result_appointments) {
                 </tr> 
             </thead> 
             <tbody> 
+                <?php if (mysqli_num_rows($result_appointments) === 0): ?>
+    <tr>
+        <td colspan="6" style="text-align: center;">No appointments yet.</td>
+    </tr>
+<?php endif; ?>
                 <?php while ($row = mysqli_fetch_assoc($result_appointments)): ?>
                     <tr> 
                         <td><?php echo htmlspecialchars($row['time']); ?></td> 
