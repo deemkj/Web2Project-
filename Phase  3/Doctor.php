@@ -94,6 +94,7 @@ $patients = mysqli_query($conn, $sqlPatients);
     <meta charset="UTF-8">
     <title>Doctor Homepage</title>
     <link rel="stylesheet" href="../css/StyleSheet.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <header>
@@ -155,10 +156,10 @@ if ($photoName) {
                     <td class="status-cell">
                 <?php if ($row['status'] === "Pending") { ?>
                     <span class="status-text pending">Pending</span><br>
-                    <a class="actiion-link confirm-link" href="confirm_appointment.php?id=<?php echo $row['id']; ?>">Confirm</a>
+                    <a class="action-link confirm-link" data-id="<?php echo $row['id']; ?>" href="#">Confirm</a>
                 <?php } elseif ($row['status'] === "Confirmed") { ?>
                     <span class="status-text confirmed">Confirmed</span><br>
-                    <a class="actiion-link prescribe-link" href="Prescribe Medication.php?appointment_id=<?php echo $row['id']; ?>&patient_id=<?php echo $row['patientID']; ?>">Prescribe</a>
+                    <a class="action-link prescribe-link" href="Prescribe Medication.php?appointment_id=<?php echo $row['id']; ?>&patient_id=<?php echo $row['patientID']; ?>">Prescribe</a>
                 <?php } ?>
                  </td>
                 </tr>
@@ -214,5 +215,33 @@ if ($photoName) {
         <p>&copy; 2025 Website. All rights reserved.</p> 
     </div> 
 </footer> 
+    <script>
+$(document).ready(function() {
+    $('.confirm-link').on('click', function(e) {
+        e.preventDefault();
+        const appointmentId = $(this).data('id');
+        const $row = $(this).closest('tr');
+
+        $.ajax({
+            url: 'confirm_appointment.php',
+            method: 'POST',
+            data: { id: appointmentId },
+            success: function(response) {
+                if (response.trim() === 'true') {
+                    $row.find('.status-cell').html(
+                        '<span class="status-text confirmed">Confirmed</span><br>' +
+                        '<a class="action-link prescribe-link" href="Prescribe Medication.php?appointment_id=' + appointmentId + '&patient_id=' + $row.find('td:nth-child(3)').data('id') + '">Prescribe</a>'
+                    );
+                } else {
+                    alert("Failed to confirm the appointment.");
+                }
+            },
+            error: function() {
+                alert("An error occurred while processing the request.");
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
