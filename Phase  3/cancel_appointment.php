@@ -1,36 +1,33 @@
 <?php
-
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
- */
-
-
 session_start();
 include 'DBconnection.php';
 
+
+header('Content-Type: application/json');
+
+
 if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'patient') {
-    header("Location: ../pages/Log-In page.html"); 
+    echo json_encode("Session not valid");
     exit();
 }
-if (isset($_GET['appointment_id'])) {
-    $appointment_id = $_GET['appointment_id'];
 
 
+if (isset($_POST['appointment_id'])) {
+    $appointment_id = $_POST['appointment_id'];
+
+    
     $sql = "DELETE FROM Appointment WHERE id = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "i", $appointment_id);
 
     if (mysqli_stmt_execute($stmt)) {
-        header("Location: Patient Homepage.php"); 
-        exit();
+        echo json_encode(true); 
     } else {
-        die("Error canceling appointment: " . mysqli_error($conn));
+        echo json_encode("Database error: " . mysqli_error($conn));
     }
 } else {
-    die("Invalid request.");
+    echo json_encode("No appointment ID received");
 }
 
-// close connection to ebsardb
 mysqli_close($conn);
 ?>
