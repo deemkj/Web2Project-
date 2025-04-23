@@ -51,8 +51,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'patient') {
                 <?php
                 $sql="SELECT * FROM speciality";
                 $result=mysqli_query($conn,$sql);
-          echo '<select name="speciality" id="specialty" class="dropdown" required>';
-//                echo '<select name="speciality" id="specialty-dropdown" class="dropdown" required>';
+
+                echo '<select name="speciality" id="specialty-dropdown" class="dropdown" required>';
 
            echo' <option value="" disabled selected>Choose a specialty...</option>';
 
@@ -61,7 +61,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'patient') {
 
                 }
                 echo"</select>";
-                echo'<button type="submit" class="bttn">Submit</button>';
+
                 
                         ?>
             </form>
@@ -69,8 +69,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'patient') {
             <!-- Second Form - Booking the Appointment-->
             <form class="form form-details" action='BookNewAppointment.php?PID=101098709' method='post' >
                 <h2>Appointment Details</h2>
-               <select name="doctorID" id="doctor" class="dropdown" required>  
-<!--                <select name="doctorID" id="doctor-dropdown" class="dropdown" required>-->
+                <select name="doctorID" id="doctor-dropdown" class="dropdown" required>
 
                     <option value="" disabled selected>Select a doctor...</option>
                     
@@ -168,7 +167,34 @@ echo "<option value='" . $r['id'] . "'>" . $r['firstName'] . " " . $r['lastName'
         </div>
     </footer>
     
-   
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#specialty-dropdown').on('change', function() {
+        var selectedSpecialty = $(this).val();
+
+        if (selectedSpecialty !== '') {
+            $.ajax({
+                url: 'getDoctorsBySpecialty.php',
+                type: 'POST',
+                data: { specialty: selectedSpecialty },
+                dataType: 'json',
+                success: function(response) {
+                    $('#doctor-dropdown').empty();
+                    $('#doctor-dropdown').append('<option value="" disabled selected>Select a doctor...</option>');
+
+                    $.each(response, function(index, doctor) {
+                        $('#doctor-dropdown').append('<option value="' + doctor.id + '">' + doctor.name + '</option>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    alert('Error loading doctors: ' + error);
+                }
+            });
+        }
+    });
+});
+</script>
 
 </body>
 </html>
