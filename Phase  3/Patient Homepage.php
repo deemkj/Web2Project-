@@ -126,7 +126,7 @@ if (!$result_appointments) {
                         </td> 
                         <td><?php echo htmlspecialchars($row['status']); ?></td> 
                         <td>
-             <a href="cancel_appointment.php?appointment_id=<?php echo $row['id']; ?>" class="cancel-btn">Cancel</a>
+            <button class="cancel-btn" data-id="<?php echo $row['id']; ?>">Cancel</button>
               </td>
                     </tr> 
                 <?php endwhile; ?>
@@ -157,6 +157,37 @@ if (!$result_appointments) {
         <p>&copy; 2025 Website. All rights reserved.</p> 
     </div> 
 </footer> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.cancel-btn').click(function() {
+        var button = $(this);
+        var appointmentId = button.data('id');
+        console.log("Appointment to cancel:", appointmentId); // للمراجعة
+
+        if (confirm("Are you sure you want to cancel this appointment?")) {
+            $.ajax({
+                url: 'cancel_appointment.php',
+                type: 'POST',
+                data: { appointment_id: appointmentId },
+                success: function(response) {
+                    console.log("Response:", response); // للمراجعة
+                    if (response === true || response === "true") {
+                        button.closest('tr').fadeOut(300, function() {
+                            $(this).remove();
+                        });
+                    } else {
+                        alert("Failed: " + response);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("AJAX Error: " + error);
+                }
+            });
+        }
+    });
+});
+</script>
 </body> 
 </html>
 
